@@ -11,31 +11,23 @@ export const DialogNavigation = ({
 	isCurrentDialog,
 }: DialogNavigationProps) => {
 	return (
-		<DialogFooter className="flex justify-between">
-			<div className="flex gap-2">
-				{canNavigatePrevious && (
-					<Button
-						variant="outline"
-						onClick={isCurrentDialog ? onPrevious : undefined}
-						disabled={!isCurrentDialog}
-					>
-						<ChevronLeft className="mr-1 h-4 w-4" />
-						Previous
-					</Button>
-				)}
-			</div>
+		<DialogFooter className="flex w-full items-center justify-between">
+			<Button
+				variant="outline"
+				onClick={isCurrentDialog ? onPrevious : undefined}
+				disabled={!isCurrentDialog || !canNavigatePrevious}
+			>
+				<ChevronLeft className="mr-1 h-4 w-4" />
+				Previous
+			</Button>
 
-			<div className="flex gap-2">
-				{canNavigateNext && (
-					<Button
-						onClick={isCurrentDialog ? onNext : undefined}
-						disabled={!isCurrentDialog}
-					>
-						Next
-						<ChevronRight className="ml-1 h-4 w-4" />
-					</Button>
-				)}
-			</div>
+			<Button
+				onClick={isCurrentDialog ? onNext : undefined}
+				disabled={!isCurrentDialog || !canNavigateNext}
+			>
+				Next
+				<ChevronRight className="ml-1 h-4 w-4" />
+			</Button>
 		</DialogFooter>
 	)
 }

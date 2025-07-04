@@ -20,7 +20,7 @@ export const DialogStack = ({
 	return (
 		<Dialog open={dialogState.isOpen} onOpenChange={onClose}>
 			<DialogPortal>
-				<DialogOverlay onClick={onClose} />
+				<DialogOverlay onClick={onClose} data-testid="dialog-overlay" />
 				{/* Render all dialogs from 0 to current index */}
 				{dialogState.dialogStack
 					.slice(0, dialogState.currentDialogIndex + 1)
